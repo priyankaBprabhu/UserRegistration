@@ -51,7 +51,8 @@ public class ParameterizedEmailTest {
     @Test
     public void givenEmail_WhenProper_ShouldReturnAsPerCondition() {
         EmailVerification  obj = new EmailVerification();
-        Assert.assertEquals(this.expectedResult, obj.validateEmail(email));
+        boolean result = obj.validateEmail(email);
+        Assert.assertEquals(this.expectedResult, result );
     }
 }
 
