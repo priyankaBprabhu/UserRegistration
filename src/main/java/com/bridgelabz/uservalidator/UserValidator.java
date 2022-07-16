@@ -1,11 +1,12 @@
 package com.bridgelabz.uservalidator;
 
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
-public class UserValidator {
+public  class UserValidator {
     boolean result;
-    public boolean userName(String name)  {
-        result = Pattern.matches("^[A-Z][a-z]{2,}", name);
+    Predicate<String> userName = userName -> {
+        result = userName.matches("^[A-Z][a-z]{2,}");
         try {
             if(!result)
                 throw new UserValidatorException( "Entered Invalid Name");
@@ -13,11 +14,11 @@ public class UserValidator {
             System.out.println(e.getMessage());
         }
         return result;
-    }
+    };
 
-    public boolean userMail(String userMail) {
+    Predicate<String> userMail = userMail -> {
         //return Pattern.matches("^(abc)[.]?[a-z 0-9_-]{0,}[@]?(bl)[.]?(co)[.]?(in)", userMail);
-        result = Pattern.matches("^(abc)([+-.]?[\\da-z])*[@][0-9a-z]+([.][a-z]{2,3}){1,2}$",userMail);
+        result = userMail.matches("^(abc)([+-.]?[\\da-z])*[@][0-9a-z]+([.][a-z]{2,3}){1,2}$");
         try {
             if(!result)
                 throw new UserValidatorException( "Entered Invalid Mail");
@@ -26,10 +27,10 @@ public class UserValidator {
         }
         return result;
 
-    }
+    };
 
-    public boolean userMobileNumber(String userPhoneNumber) {
-        result = Pattern.matches("^(91 )[0-9]{10}", userPhoneNumber);
+    Predicate<String> userMobileNumber = userMobileNumber -> {
+        result = userMobileNumber.matches("^(91 )[0-9]{10}");
         try {
             if(!result)
                 throw new UserValidatorException( "Entered Invalid Number");
@@ -37,10 +38,10 @@ public class UserValidator {
             System.out.println(e.getMessage());
         }
         return result;
-    }
+    };
 
-    public boolean userPassword(String userPassword) {
-        result = Pattern.matches("(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}$", userPassword);
+    Predicate<String> userPassword = userPassword -> {
+        result = userPassword.matches("(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}$");
         try {
             if(!result)
                 throw new UserValidatorException( "Entered Invalid Password");
@@ -48,5 +49,5 @@ public class UserValidator {
             System.out.println(e.getMessage());
         }
         return result;
-    }
+    };
 }

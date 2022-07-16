@@ -7,28 +7,28 @@ public class UserValidatorTest {
     @Test
     public void givenFirstName_WhenProperFormat_ShouldReturnTrue()  {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userName("Priya");
+        boolean result = obj.userName.test("Priya");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenFirstName_WhenNotProperFormat_ShouldReturnFails()  {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userName("iya");
+        boolean result = obj.userName.test("iya");
         Assert.assertFalse(result);
     }
 
     @Test
     public void givenLastName_WhenProperFormat_ShouldReturnTrue()  {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userName("Developer");
+        boolean result = obj.userName.test("Developer");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenLastName_WhenNotProperFormat_ShouldReturnFails()  {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userName("abc");
+        boolean result = obj.userName.test("abc");
         Assert.assertFalse(result);
     }
 
@@ -36,42 +36,42 @@ public class UserValidatorTest {
     @Test
     public void givenEmail_WhenValid_ShouldReturnTrue() {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userMail("abc.xyz@bl.co.in");
+        boolean result = obj.userMail.test("abc.xyz@bl.co.in");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenEmail_WhenInValid_ShouldReturnFalse() {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userMail("abc.x.co.in");
+        boolean result = obj.userMail.test("abc.x.co.in");
         Assert.assertFalse(result);
     }
 
     @Test
     public void givenMobileNumber_WhenValidFormat_ShouldReturnTrue() {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userMobileNumber("91 6405786859");
+        boolean result = obj.userMobileNumber.test("91 6405786859");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenMobileNumber_WhenInValidFormat_ShouldReturnFalse() {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userMobileNumber("91 64057868");
+        boolean result = obj.userMobileNumber.test("91 64057868");
         Assert.assertFalse(result);
     }
 
     @Test
     public void givenPassword_WhenProperFormat_ShouldReturnTrue() {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userPassword("hjhhGHJ1n@d");
+        boolean result = obj.userPassword.test("hjhhGHJ1n@d");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenPassword_WhenNotInProperFormat_ShouldReturnFalse() {
         UserValidator obj = new UserValidator();
-        boolean result = obj.userPassword("hjhhGHJ1d");
+        boolean result = obj.userPassword.test("hjhhGHJ1d");
         Assert.assertFalse(result);
 
     }

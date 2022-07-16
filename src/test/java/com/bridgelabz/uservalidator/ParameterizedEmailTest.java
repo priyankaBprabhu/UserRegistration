@@ -8,16 +8,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-class EmailVerification {
-    public boolean validateEmail(final String gmail) {
-        return Pattern.matches("^(abc)([+-.]?[\\da-z])*[@][0-9a-z]+([.][a-z]{2,3}){1,2}$", gmail);
-    }
-}
 
 @RunWith(Parameterized.class)
 public class ParameterizedEmailTest {
     private  String email;
     private  boolean expectedResult;
+    UserValidator register = new UserValidator();
 
     public ParameterizedEmailTest(String  email, Boolean expectedResult){
         this.email = email;
@@ -50,8 +46,7 @@ public class ParameterizedEmailTest {
 
     @Test
     public void givenEmail_WhenProper_ShouldReturnAsPerCondition() {
-        EmailVerification  obj = new EmailVerification();
-        boolean result = obj.validateEmail(email);
+        boolean result = register.userMail.test(email);
         Assert.assertEquals(this.expectedResult, result );
     }
 }
